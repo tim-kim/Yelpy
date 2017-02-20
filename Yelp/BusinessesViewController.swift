@@ -88,6 +88,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell", for: indexPath) as! BusinessCell
         cell.business = filteredData[indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -120,6 +121,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
                 // Code to load more results
                 refreshTable()
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "show") {
+            return
         }
     }
 }
